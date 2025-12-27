@@ -15,14 +15,14 @@ interface ResultChartProps {
 
 const ResultChart: React.FC<ResultChartProps> = ({ score }) => {
   const data = [
-    { subject: 'Extraversion', A: score.E, fullMark: 3 },
-    { subject: 'Introversion', A: score.I, fullMark: 3 },
-    { subject: 'Sensing', A: score.S, fullMark: 3 },
-    { subject: 'Intuition', A: score.N, fullMark: 3 },
-    { subject: 'Thinking', A: score.T, fullMark: 3 },
-    { subject: 'Feeling', A: score.F, fullMark: 3 },
-    { subject: 'Judging', A: score.J, fullMark: 3 },
-    { subject: 'Perceiving', A: score.P, fullMark: 3 },
+    { subject: '外向型 (E)', A: score.E, fullMark: 3 },
+    { subject: '内向型 (I)', A: score.I, fullMark: 3 },
+    { subject: '感覚型 (S)', A: score.S, fullMark: 3 },
+    { subject: '直観型 (N)', A: score.N, fullMark: 3 },
+    { subject: '思考型 (T)', A: score.T, fullMark: 3 },
+    { subject: '感情型 (F)', A: score.F, fullMark: 3 },
+    { subject: '判断型 (J)', A: score.J, fullMark: 3 },
+    { subject: '知覚型 (P)', A: score.P, fullMark: 3 },
   ];
 
   return (
