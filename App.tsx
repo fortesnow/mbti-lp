@@ -52,14 +52,10 @@ const HomeView: React.FC<{ onStart: () => void }> = ({ onStart }) => (
         <div className="inline-block p-4 bg-white/80 backdrop-blur-sm rounded-full shadow-lg mb-4 ring-4 ring-pink-50 animate-float">
           <span className="text-5xl">🔮</span>
         </div>
-        <h1 className="text-3xl font-bold text-gray-800 tracking-wide leading-relaxed">
-          <span className="block text-lg text-primary font-medium mb-1">本当の私に出会う</span>
-          16タイプ性格診断
-        </h1>
-        <p className="text-gray-600 leading-relaxed text-sm">
-          たった12問・2分で完了。<br />
-          直感で答えて、あなたの本質を見つけましょう。
-        </p>
+        <div className="py-8 border-2 border-dashed border-gray-300 rounded-xl bg-gray-50/50">
+          <p className="text-gray-600 font-medium mb-2">文章ではなく画像を入れようと思うので</p>
+          <p className="text-gray-500 text-sm">クライアント向けにデザインは思案中です</p>
+        </div>
       </div>
 
       <div className="bg-white/80 backdrop-blur p-6 rounded-3xl shadow-sm border border-white text-left space-y-3 mx-4">
@@ -278,10 +274,13 @@ const ResultView: React.FC<ResultViewProps> = ({ resultType, axisScore }) => {
         {/* Details Grid */}
         <div className="grid grid-cols-1 gap-4">
           <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100/50">
-            <h3 className="font-bold text-green-700 mb-3 flex items-center text-sm">
+            <h3 className="font-bold text-green-700 mb-2 flex items-center text-sm">
               <span className="w-6 h-6 bg-white rounded-full flex items-center justify-center mr-2 shadow-sm">✨</span>
               あなたの魅力・強み
             </h3>
+            <p className="text-xs text-green-800 font-bold mb-3 leading-relaxed">
+              {data.strengthIntro}
+            </p>
             <ul className="space-y-2">
               {data.strengths.map((s, i) => (
                 <li key={i} className="text-sm text-green-800 flex items-start">
@@ -292,10 +291,13 @@ const ResultView: React.FC<ResultViewProps> = ({ resultType, axisScore }) => {
           </div>
 
           <div className="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-2xl border border-orange-100/50">
-            <h3 className="font-bold text-orange-700 mb-3 flex items-center text-sm">
+            <h3 className="font-bold text-orange-700 mb-2 flex items-center text-sm">
               <span className="w-6 h-6 bg-white rounded-full flex items-center justify-center mr-2 shadow-sm">💡</span>
               注意したいポイント
             </h3>
+            <p className="text-xs text-orange-800 font-bold mb-3 leading-relaxed">
+              {data.weaknessIntro}
+            </p>
             <ul className="space-y-2">
               {data.weaknesses.map((w, i) => (
                 <li key={i} className="text-sm text-orange-800 flex items-start">
@@ -305,36 +307,31 @@ const ResultView: React.FC<ResultViewProps> = ({ resultType, axisScore }) => {
             </ul>
           </div>
 
-          {/* Suitable Professions (Blurred) */}
-          <div className="relative overflow-hidden rounded-2xl mt-4">
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-2xl border border-blue-100/50 blur-sm select-none">
-              <h3 className="font-bold text-blue-700 mb-3 flex items-center text-sm">
+          {/* Suitable Professions (Blur + CTA) */}
+          <div className="relative overflow-hidden rounded-2xl mt-4 cursor-pointer group" onClick={handleLineClick}>
+            {/* Blurred Background Content */}
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-2xl border border-blue-100/50 blur-sm select-none transition-all duration-300 group-hover:blur-md">
+              <h3 className="font-bold text-blue-700 mb-3 flex items-center text-sm opacity-50">
                 <span className="w-6 h-6 bg-white rounded-full flex items-center justify-center mr-2 shadow-sm">💼</span>
                 あなたに向いている職業
               </h3>
-              <ul className="space-y-2">
-                {data.professions?.map((p, i) => (
-                  <li key={i} className="text-sm text-blue-800 flex items-start">
-                    <span className="mr-2 text-blue-400">●</span> {p}
-                  </li>
-                ))}
+              <ul className="space-y-2 opacity-50">
+                {/* Dummy items that look like text to hint at content */}
+                <li className="text-sm text-blue-800 flex items-start"><span className="mr-2 text-blue-400">●</span> 〇〇〇〇〇〇</li>
+                <li className="text-sm text-blue-800 flex items-start"><span className="mr-2 text-blue-400">●</span> 〇〇・〇〇〇〇</li>
+                <li className="text-sm text-blue-800 flex items-start"><span className="mr-2 text-blue-400">●</span> 〇〇〇〇〇</li>
+                <li className="text-sm text-blue-800 flex items-start"><span className="mr-2 text-blue-400">●</span> 〇〇〇〇・〇〇</li>
               </ul>
             </div>
 
             {/* Overlay CTA */}
-            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white/30 backdrop-blur-[1px]">
-              <p className="text-xs font-bold text-gray-600 mb-3 bg-white/80 px-4 py-1 rounded-full shadow-sm">
-                👑 続きはLINEで確認
-              </p>
-              <button
-                onClick={handleLineClick}
-                className="bg-[#06C755] hover:bg-[#05b34c] text-white text-sm font-bold py-3 px-6 rounded-full shadow-lg shadow-green-100 transition-transform active:scale-95 flex items-center animate-pulse-slow"
-              >
-                LINEで職業診断の結果を見る
-                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white/10 backdrop-blur-[2px] transition-all duration-300 group-hover:bg-white/20">
+              <div className="bg-white/90 backdrop-blur-md px-6 py-4 rounded-3xl shadow-lg shadow-blue-100/50 text-center transform transition-all duration-300 group-hover:scale-105 active:scale-95">
+                <p className="text-sm font-bold text-gray-700 mb-2">あなたにあったお仕事は？</p>
+                <div className="inline-flex items-center text-[#06C755] font-black text-xs bg-white border border-[#06C755] px-4 py-2 rounded-full shadow-sm animate-pulse-slow">
+                  LINEで答えを見る 👉
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -24,7 +24,9 @@ export interface TypeResult {
   title: string;
   description: string;
   strengths: string[];
+  strengthIntro: string; // New: simple intro without brackets/commas
   weaknesses: string[];
+  weaknessIntro: string; // New: simple intro without brackets/commas
   professions: string[];
   lineUrl: string;
   imagePath: string; // Static image path
