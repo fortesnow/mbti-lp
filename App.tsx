@@ -54,7 +54,7 @@ const HomeView: React.FC<{ onStart: () => void }> = ({ onStart }) => (
         </div>
         <div className="py-8 border-2 border-dashed border-gray-300 rounded-xl bg-gray-50/50">
           <p className="text-gray-600 font-medium mb-2">文章ではなく画像を入れようと思うので</p>
-          <p className="text-gray-500 text-sm">クライアント向けにデザインは思案中です</p>
+          <p className="text-gray-500 text-sm">動的要素か静的含めてデザインは思案中です</p>
         </div>
       </div>
 
@@ -67,11 +67,11 @@ const HomeView: React.FC<{ onStart: () => void }> = ({ onStart }) => (
           </li>
           <li className="flex items-center">
             <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-purple-100 text-purple-500 rounded-full text-xs mr-3">✓</span>
-            相性の良いパートナーや環境
+            相性の良いお仕事は？
           </li>
           <li className="flex items-center">
             <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 text-blue-500 rounded-full text-xs mr-3">✓</span>
-            あなたを表す性格イメージイラスト
+            あなたを表す内面の特徴
           </li>
         </ul>
       </div>
